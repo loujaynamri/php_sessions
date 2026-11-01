@@ -15,10 +15,14 @@
         echo "<td>".htmlspecialchars($value["annee"])."</td>";
         echo "<td>".htmlspecialchars($value["nombreCategories"])."</td>";
         echo "<td>".htmlspecialchars($value["categories"])."</td>";
-        echo "<td><button class='btn btn-success'>voir le résumé</button></td>";
+        echo "<td><a href='resumer.php?btn=".$value['resume']."'><button type='button' class='btn btn-success'>Voir le résumé</button></a></td>";
         echo "</tr>";
     }
     echo "</table>";
+    if(isset($_POSTT["btn-retour"])){
+        header("Location:index.php");
+        exit;
+    }
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -29,6 +33,8 @@
         <title>Document</title>
     </head>
     <body>
-        <button class="btn btn-dark></button>
+        <form action="<?$_SERVER['PHP_SELF']?>" method="post">
+            <button class="btn btn-dark" name="btn-retour" type="submit"> Retoure au formulaire </button>
+        </form>
     </body>
     </html>
